@@ -6,14 +6,14 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="none" onload="this.media='all'">
-        <link rel="stylesheet" href="css/main.css">
-        <title>Posts - LaraBlogger</title>
+        <link rel="stylesheet" href="/css/main.css">
+        <title>Posts - LaraBlog</title>
     </head>
     <body class="page-index">
         <div class="container">
             <header class="mainHeader">
                 <div class="wrapper flex">
-                    <a href="#" class="logo">LaraBlogger</a>
+                    <a href="#" class="logo">LaraBlog</a>
                     <nav>
                         <ul>
                             <li><a href="#">About me</a></li>
@@ -125,7 +125,7 @@
                 </article>
                 <div class="wrapper">
                     <div class="pagination">
-                        <a href="//larablogger.test:3002/?p=1" class="paginationPrev" title="Previous">
+                        <a href="//LaraBlog.test:3002/?p=1" class="paginationPrev" title="Previous">
                             <i class="fa fa-caret-left"></i>&nbsp;&nbsp;&nbsp;Previous
                         </a>
                         <a href="#" class="paginationNext" title="Next">
@@ -136,7 +136,7 @@
             </section>
             <footer class="mainFooter">
                 <div class="wrapper">
-                    <p>&copy; 2019 LaraBlogger</p>
+                    <p>&copy; 2019 LaraBlog</p>
                     <nav>
                         <ul>
                             <li><a href="#">About me</a></li>
@@ -145,7 +145,7 @@
                             <li><a href="#">RSS</a></li>
                         </ul>
                     </nav>
-                    <p class="author">All rights reserved <a href="#">LaraBlogger</a></p>
+                    <p class="author">All rights reserved <a href="#">LaraBlog</a></p>
                 </div>
             </footer>
         </div>
