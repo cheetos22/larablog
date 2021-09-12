@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('pages.posts');
 });
+
+Route::get('/o-mnie', function () {
+    return view('pages.about');
+})->name('about');
