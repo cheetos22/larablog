@@ -2,6 +2,7 @@
 @section('title', 'Posty')
 
 @section('content')
+@if ($posts->count() > 0)
 @foreach ($posts as $post)
 @if ($post->type === 'text')
 <article class="post formatText">
@@ -67,4 +68,9 @@
 </article>
 @endif
 @endforeach
+@else
+    <div class="wrapper">
+        <p>Nie dodano jeszcze żadnych wpisów</p>
+    </div>
+@endif
 @endsection
