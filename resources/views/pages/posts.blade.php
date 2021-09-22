@@ -9,7 +9,7 @@
     <div class="postContent">
         <div class="wrapper">
             <h2 class="postTitle">
-                <a href="#">{{ $post->title }}</a>
+                <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
             </h2>
             <div class="rte">
                 {!! $post->content !!}
@@ -41,7 +41,7 @@
 <article class="post formatPhoto">
     <figure class="postImage">
         <i class="postPremium fa fa-star"></i>
-        <a href="#">
+        <a href="/posts/{{ $post->id }}">
         <img src="{{ $post->image }}" alt="" class="mainPhoto">
         </a>
         <div class="cover"
