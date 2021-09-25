@@ -8,7 +8,7 @@
     <div class="postContent">
         <div class="wrapper">
             <h2 class="postTitle">
-                <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                <a href="{{ route('posts.single', $post->slug) }}">{{ $post->title }}</a>
             </h2>
             <div class="rte">
                 {!! $post->content !!}
@@ -26,7 +26,7 @@
             </li>
         </ul>
         <div class="flex flex-sb">
-            <p class="date"><i class="fa fa-clock-o"></i> 1 day ago</p>
+            <p class="date"><i class="fa fa-clock-o"></i> {{ $post->date->diffForHumans() }}</p>
             <p>
                 <a href="#" class="link"><i class="fa fa-edit"></i> Edytuj</a>
             </p>
@@ -37,7 +37,7 @@
 <article class="post formatPhoto">
     <figure class="postImage">
         <i class="postPremium fa fa-star"></i>
-        <a href="/posts/{{ $post->id }}">
+        <a href="{{ route('posts.single', $post->slug) }}">
         <img src="{{ $post->image }}" alt="" class="mainPhoto">
         </a>
         <div class="cover"
@@ -55,7 +55,7 @@
             </li>
         </ul>
         <div class="flex flex-sb">
-            <p class="date"><i class="fa fa-clock-o"></i> 1 day ago</p>
+            <p class="date"><i class="fa fa-clock-o"></i> {{ $post->date->diffForHumans() }}</p>
             <p>
                 <a href="#" class="link"><i class="fa fa-edit"></i> Edytuj</a>
             </p>
