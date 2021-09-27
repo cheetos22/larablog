@@ -18,7 +18,11 @@
                     <nav>
                         <ul>
                             <li><a href="{{ route('about') }}"{!! request()->routeIs('about') ?  ' class="is-active"' : '' !!}>O mnie</a></li>
-                            <li><a href="#">Login</a></li>
+                            @auth
+                            <li><a href="#logout">Wyloguj</a></li>
+                            @else
+                            <li><a href="{{ route('login') }}"{!! request()->routeIs('login') ?  ' class="is-active"' : '' !!}">Zaloguj</a></li>
+                            @endauth
                             <li><a href="#">Contact</a></li>
                             <li><a href="#">RSS <i class="fa fa-rss-square"></i></a></li>
                         </ul>
@@ -39,7 +43,9 @@
                     <nav>
                         <ul>
                             <li><a href="{{ url('/') }}">About me</a></li>
-                            <li><a href="#">Login</a></li>
+                            @guest
+                            <li><a href="#">Zaloguj</a></li>
+                            @endguest
                             <li><a href="#">Contact</a></li>
                             <li><a href="#">RSS</a></li>
                         </ul>
@@ -48,6 +54,19 @@
                 </div>
             </footer>
         </div>
+        @auth
+        <form id="logout-form" method="POST" action="{{ route('logout') }}">
+            @csrf
+        </form>
+
+        <script>
+            document.querySelector("a[href='#logout']").addEventListener("click", function(e) {
+                e.preventDefault();
+
+                document.querySelector("#logout-form").submit();
+            }, false);
+        </script>
+        @endauth
     </body>
 </html>
 
