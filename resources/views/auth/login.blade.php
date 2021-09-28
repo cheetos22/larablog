@@ -19,7 +19,7 @@
         </form>
 
         <div class="rte mt">
-            <p>Don't have an account? <a href="{{ route('register') }}">Register now.</a><br>Forgot your password? <a href="#">Reset it here.</a></p>
+            <p>Don't have an account? <a href="{{ route('register') }}">Register now.</a><br>Forgot your password? <a href="{{ route('password.request') }}">Reset it here.</a></p>
         </div>
     </div>
 @endsection
