@@ -21,4 +21,5 @@ Route::get('/o-mnie', function () {
     return view('pages.about');
 })->name('about');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+
