@@ -23,3 +23,5 @@ Route::get('/o-mnie', function () {
 
 Auth::routes(['verify' => true]);
 
+Route::get('/admin/post/create', 'Admin\PostController@create')->name('admin.post.create');
+
