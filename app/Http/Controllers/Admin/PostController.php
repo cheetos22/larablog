@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class PostController extends Controller
 {
@@ -25,7 +27,22 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required|max:255',
+            'type' => 'required|in:text,photo',
+            'date' => 'nullable|date',
+            'image' => 'nullable',
+            'content' => 'nullable'
+
+        ]);
+
+        $data = Arr::add($data, 'date', now());
+
+        $post = Post::create($data);
+
+        session()->flash('message', 'Post has been added!');
+
+        return redirect(route('posts.single', $post->slug));
     }
 
     /**
@@ -47,7 +64,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        return view('admin.post.edit', compact('post'));
     }
 
     /**

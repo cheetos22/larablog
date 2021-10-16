@@ -1,29 +1,29 @@
 @extends('layouts.master')
-@section('title', 'Create New Post')
+@section('title', 'Edit Post')
 
 @section('content')
     <div class="wrapper">
         <div class="rte">
-            <h1>Create new post</h1>
+            <h1>Edit post</h1>
         </div>
 
-        <form method="POST" action="{{ route('admin.post.create') }}">
+        <form method="GET" action="">
             @csrf
             <div class="form-fieldset">
-                <input class="form-field{{ $errors->has('title') ? ' is-invalid' : '' }}" type="text" name="title" placeholder="Title" value="{{ old('title') }}">
+                <input class="form-field{{ $errors->has('title') ? ' is-invalid' : '' }}" type="text" name="title" placeholder="Title" value="{{ $post->title }}">
             </div>
             <div class="form-fieldset">
                 <div class="form-select{{ $errors->has('type') ? ' is-invalid' : '' }}">
                     <select name="type">
-                        <option value="" disabled selected>Choose Type</option>
-                        <option value="text">Type: Text</option>
-                        <option value="photo">Type: Photo</option>
+                        <option value="" disabled>Choose Type</option>
+                        <option value="text" {{ $post->type === 'text' ? 'selected' : '' }}>Type: Text</option>
+                        <option value="photo" {{ $post->type === 'photo' ? 'selected' : '' }}>Type: Photo</option>
                     </select>
                 </div>
             </div>
             <div class="form-fieldset">
                 <label class="form-label">Date:</label>
-                <input class="form-field{{ $errors->has('date') ? ' is-invalid' : '' }}" type="date" name="date">
+                <input class="form-field{{ $errors->has('date') ? ' is-invalid' : '' }}" type="date" name="date" value="{{ $post->date->format('Y-m-d') }}">
             </div>
             <div class="form-fieldset">
                 <label class="form-label">Published:</label>
@@ -38,9 +38,9 @@
                 <input type="file" name="image">
             </div>
             <div class="form-fieldset is-wide">
-                <textarea class="form-textarea" name="content" placeholder="Content">{{ old('content') }}</textarea>
+                <textarea class="form-textarea" name="content" placeholder="Content">{{ $post->content }}</textarea>
             </div>
-            <button class="button">Add post</button>
+            <button class="button">Edit post</button>
         </form>
     </div>
 @endsection

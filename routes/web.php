@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'PostController@index');
-Route::get('/posts/{post}', 'PostController@show')->name('posts.single');
+Route::get('/post/{post}', 'PostController@show')->name('posts.single');
 
 Route::get('/o-mnie', function () {
     return view('pages.about');
@@ -24,4 +24,5 @@ Route::get('/o-mnie', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/admin/post/create', 'Admin\PostController@create')->name('admin.post.create');
-
+Route::post('/admin/post/create', 'Admin\PostController@store');
+Route::get('/admin/post/{id}', 'Admin\PostController@edit')->name('admin.post.edit');
