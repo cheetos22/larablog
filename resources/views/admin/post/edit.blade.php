@@ -7,8 +7,10 @@
             <h1>Edit post</h1>
         </div>
 
-        <form method="GET" action="">
+        <form method="POST" action="{{ route('admin.post.edit', $post->id) }}">
             @csrf
+            {{ method_field('PUT') }}
+
             <div class="form-fieldset">
                 <input class="form-field{{ $errors->has('title') ? ' is-invalid' : '' }}" type="text" name="title" placeholder="Title" value="{{ $post->title }}">
             </div>
@@ -42,5 +44,16 @@
             </div>
             <button class="button">Edit post</button>
         </form>
+
+        <div class="rte mt">
+            <h1>Delete post</h1>
+        </div>
+
+        <form method="POST" action="{{ route('admin.post.delete', $post->id) }}">
+            @csrf
+            {{ method_field('DELETE') }}
+            <button class="button button--danger" onclick="return confirm('Are you sure?')">Delete post</button>
+        </form>
+
     </div>
 @endsection

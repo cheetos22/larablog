@@ -36,7 +36,7 @@ class PostController extends Controller
 
         ]);
 
-        $data = Arr::add($data, 'date', now());
+        //$data = Arr::add($data, 'date', now());
 
         $post = Post::create($data);
 
@@ -78,7 +78,22 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $data = $request->validate([
+            'title' => 'required|max:255',
+            'type' => 'required|in:text,photo',
+            'date' => 'nullable|date',
+            'image' => 'nullable',
+            'content' => 'nullable'
+
+        ]);
+
+        //$data = Arr::add($data, 'date', now());
+
+        $post->update($data);
+
+        return redirect(route('posts.single', $post->slug))->with('message', 'Post has been updated!');
     }
 
     /**
@@ -89,6 +104,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $post->delete();
+
+        return redirect(url('/'))->with('message', 'Post has been deleted!');
     }
 }
