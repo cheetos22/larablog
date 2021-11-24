@@ -27,9 +27,11 @@
         </ul>
         <div class="flex flex-sb">
             <p class="date"><i class="fa fa-clock-o"></i> {{ $post->date->diffForHumans() }}</p>
+            @can('manage-posts')
             <p>
                 <a href="{{ route('admin.post.edit', $post->id) }}" class="link"><i class="fa fa-edit"></i> Edytuj</a>
             </p>
+            @endcan
         </div>
     </div>
 </article>
@@ -56,9 +58,11 @@
         </ul>
         <div class="flex flex-sb">
             <p class="date"><i class="fa fa-clock-o"></i> {{ $post->date->diffForHumans() }}</p>
+            @can('manage-posts')
             <p>
                 <a href="{{ route('admin.post.edit', $post->id) }}" class="link"><i class="fa fa-edit"></i> Edytuj</a>
             </p>
+            @endcan
         </div>
     </div>
 </article>

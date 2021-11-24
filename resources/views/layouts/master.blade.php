@@ -23,7 +23,9 @@
                             @else
                             <li><a href="{{ route('login') }}"{!! request()->routeIs('login') ?  ' class="is-active"' : '' !!}">Zaloguj</a></li>
                             @endauth
+                            @can('manage-posts')
                             <li><a href="{{ route('admin.post.create') }}">Create</a></li>
+                            @endcan
                             <li><a href="#">Contact</a></li>
                             <li><a href="#">RSS <i class="fa fa-rss-square"></i></a></li>
                         </ul>
