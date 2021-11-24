@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -86,6 +87,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::findOrFail($id);
+        $oldImage = $post->image;
 
         $data = $request->validate([
             'title' => 'required|max:255',
@@ -106,6 +108,10 @@ class PostController extends Controller
         //dd($data);
         $post->update($data);
 
+        if (isset($data['image'])){
+            Storage::delete($oldImage);
+        }
+
         return redirect(route('posts.single', $post->slug))->with('message', 'Post has been updated!');
     }
 
@@ -120,6 +126,8 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
 
         $post->delete();
+
+        Storage::delete($post->image);
 
         return redirect(url('/'))->with('message', 'Post has been deleted!');
     }
