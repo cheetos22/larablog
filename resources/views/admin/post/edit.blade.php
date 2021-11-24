@@ -7,7 +7,7 @@
             <h1>Edit post</h1>
         </div>
 
-        <form method="POST" action="{{ route('admin.post.edit', $post->id) }}">
+        <form method="POST" action="{{ route('admin.post.edit', $post->id) }}" enctype="multipart/form-data">
             @csrf
             {{ method_field('PUT') }}
 

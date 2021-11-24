@@ -31,13 +31,20 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'type' => 'required|in:text,photo',
             'date' => 'nullable|date',
-            'image' => 'nullable',
+            'image' => 'nullable|image|max:1024',
             'content' => 'nullable'
 
         ]);
 
         //$data = Arr::add($data, 'date', now());
+        if (isset($data['image'])) {
+            $path = $request->file('image')->store('photos');
+            $data['image'] = $path;
 
+
+        };
+
+        //dd($data);
         $post = Post::create($data);
 
         session()->flash('message', 'Post has been added!');
@@ -84,13 +91,19 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'type' => 'required|in:text,photo',
             'date' => 'nullable|date',
-            'image' => 'nullable',
+            'image' => 'nullable|image|max:1024',
             'content' => 'nullable'
 
         ]);
 
         //$data = Arr::add($data, 'date', now());
+        if (isset($data['image'])) {
+            $path = $request->file('image')->store('photos');
+            $data['image'] = $path;
 
+
+        };
+        //dd($data);
         $post->update($data);
 
         return redirect(route('posts.single', $post->slug))->with('message', 'Post has been updated!');
