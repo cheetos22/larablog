@@ -7,6 +7,9 @@
 <article class="post formatText">
     <div class="postContent">
         <div class="wrapper">
+            @if ($post->premium)
+            <i class="postPremium fa fa-star"></i>
+            @endif
             <h2 class="postTitle">
                 <a href="{{ route('posts.single', $post->slug) }}">{{ $post->title }}</a>
             </h2>
@@ -38,7 +41,9 @@
 @elseif ($post->type === 'photo')
 <article class="post formatPhoto">
     <figure class="postImage">
+        @if ($post->premium)
         <i class="postPremium fa fa-star"></i>
+        @endif
         <a href="{{ route('posts.single', $post->slug) }}">
         <img src="{{ $post->photo }}" alt="" class="mainPhoto">
         </a>
