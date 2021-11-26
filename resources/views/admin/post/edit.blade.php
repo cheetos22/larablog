@@ -29,11 +29,11 @@
             </div>
             <div class="form-fieldset">
                 <label class="form-label">Published:</label>
-                <input type="checkbox" name="published" value="1">
+                <input type="checkbox" name="published" value="1" {{ $post->published ? ' checked' : '' }}>
             </div>
             <div class="form-fieldset">
                 <label class="form-label">Premium:</label>
-                <input type="checkbox" name="premium" value="1">
+                <input type="checkbox" name="premium" value="1" {{ $post->premium ? ' checked' : '' }}>
             </div>
             <div class="form-fieldset">
                 <label class="form-label">Image:</label>

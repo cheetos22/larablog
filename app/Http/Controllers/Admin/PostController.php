@@ -38,8 +38,9 @@ class PostController extends Controller
             'type' => 'required|in:text,photo',
             'date' => 'nullable|date',
             'image' => 'nullable|image|max:1024',
-            'content' => 'nullable'
-
+            'content' => 'nullable',
+            'published' => 'boolean',
+            'premium' => 'boolean',
         ]);
 
         //$data = Arr::add($data, 'date', now());
@@ -99,8 +100,9 @@ class PostController extends Controller
             'type' => 'required|in:text,photo',
             'date' => 'nullable|date',
             'image' => 'nullable|image|max:1024',
-            'content' => 'nullable'
-
+            'content' => 'nullable',
+            'published' => 'boolean',
+            'premium' => 'boolean',
         ]);
 
         //$data = Arr::add($data, 'date', now());
