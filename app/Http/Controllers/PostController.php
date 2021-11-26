@@ -14,12 +14,14 @@ class PostController extends Controller
 
     public function index(){
 
-        $posts = Post::latest('date')->paginate(3);
+        $posts = Post::published()->latest('date')->paginate(3);
 
         return view('pages.posts', compact('posts'));
     }
 
-    public function show(Post $post){
+    public function show($slug){
+
+        $post = Post::published()->whereSlug($slug)->firstOrFail();
 
         return view('pages.post', compact('post'));
     }
