@@ -51,6 +51,8 @@ class PostController extends Controller
 
         };
 
+        $data['user_id'] = $request->user()->id;
+
         //dd($data);
         $post = Post::create($data);
 
