@@ -59,4 +59,8 @@ class Post extends Model
         return $query->where('published', 1);
 
     }
+
+    public function author(){
+        return $this->belongsTo(User::class, 'user_id' , 'id');
+    }
 }
