@@ -14,7 +14,7 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'content', 'date', 'type','image', 'published', 'premium',
+        'user_id', 'title', 'content', 'date', 'type','image', 'published', 'premium',
     ];
 
     protected $dates = ['date'];
