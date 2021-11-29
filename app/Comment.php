@@ -6,8 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+    protected $dates = ['date'];
+
     public function post()
     {
         return $this->belongsTo(Post::class);
+    }
+
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }
