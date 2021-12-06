@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PostController@index');
 Route::get('/post/{post}', 'PostController@show')->name('posts.single');
+Route::get('/tag/{slug}', 'TagController@index')->name('posts.tag');
 
 Route::get('/o-mnie', function () {
     return view('pages.about');
