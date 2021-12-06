@@ -95,9 +95,13 @@
             <div class="rte">
                 <h2>Add comment</h2>
             </div>
-            <form action="#">
+            <form method="POST" action="{{ route('comment.create') }}">
+                @csrf
+
+                <input type="hidden" name="post_id" value="{{ $post->id }}">
+
                 <div class="form-fieldset is-full">
-                    <textarea name="message" class="form-textarea" placeholder="Your comment"></textarea>
+                    <textarea name="content" class="form-textarea{{ $errors->has('content') ? 'is-invalid' : ' ' }}" placeholder="Your comment">{{ old('content') }}</textarea>
                 </div>
                 <button class="button">Submit</button>
             </form>
