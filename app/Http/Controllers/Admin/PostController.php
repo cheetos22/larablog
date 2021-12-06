@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Services\TagParsingService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
+
 
 class PostController extends Controller
 {
@@ -37,6 +39,7 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'type' => 'required|in:text,photo',
             'date' => 'nullable|date',
+            'tags' => 'nullable',
             'image' => 'nullable|image|max:1024',
             'content' => 'nullable',
             'published' => 'boolean',
@@ -47,14 +50,17 @@ class PostController extends Controller
         if (isset($data['image'])) {
             $path = $request->file('image')->store('photos');
             $data['image'] = $path;
-
-
         };
 
         $data['user_id'] = $request->user()->id;
 
         //dd($data);
         $post = Post::create($data);
+
+        if (isset($data['tags'])) {
+            $tags = TagParsingService::parse($data['tags']);
+            $post->tags()->sync($tags);
+        }
 
         session()->flash('message', 'Post has been added!');
 
@@ -101,6 +107,7 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'type' => 'required|in:text,photo',
             'date' => 'nullable|date',
+            'tags' => 'nullable',
             'image' => 'nullable|image|max:1024',
             'content' => 'nullable',
             'published' => 'boolean',
@@ -116,6 +123,11 @@ class PostController extends Controller
         };
         //dd($data);
         $post->update($data);
+
+        if (isset($data['tags'])) {
+            $tags = TagParsingService::parse($data['tags']);
+            $post->tags()->sync($tags);
+        }
 
         if (isset($data['image'])){
             Storage::delete($oldImage);
