@@ -28,6 +28,10 @@
                 <input class="form-field{{ $errors->has('date') ? ' is-invalid' : '' }}" type="date" name="date" value="{{ $post->date->format('Y-m-d') }}">
             </div>
             <div class="form-fieldset">
+                <label class="form-label">Tags:</label>
+                <input class="form-field{{ $errors->has('tags') ? ' is-invalid' : '' }}" type="text" name="tags" value="{{ $post->tags->implode('name', ' ') }}">
+            </div>
+            <div class="form-fieldset">
                 <label class="form-label">Published:</label>
                 <input type="checkbox" name="published" value="1" {{ $post->published ? ' checked' : '' }}>
             </div>
