@@ -28,3 +28,5 @@ Route::post('/admin/post/create', 'Admin\PostController@store');
 Route::get('/admin/post/{id}', 'Admin\PostController@edit')->name('admin.post.edit');
 Route::put('/admin/post/{id}', 'Admin\PostController@update');
 Route::delete('/admin/post/{id}', 'Admin\PostController@destroy')->name('admin.post.delete');
+
+Route::post('/comment/create', 'CommentController@store')->name('comment.create');
